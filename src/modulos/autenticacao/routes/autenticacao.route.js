@@ -1,5 +1,5 @@
 const express = require('express');
-
+const { cadastrar } = require('../../aluno/controllers/aluno.controller')
 const router = express.Router()
 
 const { login, refreshToken, sair } = require('../controller/autenticacao.controller')
@@ -7,6 +7,8 @@ const { login, refreshToken, sair } = require('../controller/autenticacao.contro
 // rota publica de login
 router.post('/login', login);
 
+// rota de cadastro
+router.post('/cadastrar', cadastrar)
 // rota para sair 
 router.post('/logout', sair);
 
