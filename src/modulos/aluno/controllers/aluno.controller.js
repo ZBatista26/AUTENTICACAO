@@ -11,7 +11,7 @@ class AlunoController {
       }
       // criptografando a senha
       const senhaCriptografada = await bcrypt.hash(senha, 15);
-      await Aluno.create({ matricula, nome, email, senha: senhaCriptografada });
+      await Aluno.create({nome, matricula, email, senha: senhaCriptografada });
       res.status(200).json({ msg: 'Aluno criado com sucesso' });
     } catch (error) {
         res.status(500).json({msg: 'Erro do servidor. Tente novamente mais tarde!'})
