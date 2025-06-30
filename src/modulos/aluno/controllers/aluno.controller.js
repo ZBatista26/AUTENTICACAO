@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const Aluno = require("../models/aluno.model");
 const bcrypt =require('bcryptjs')
 class AlunoController {
@@ -19,7 +20,12 @@ class AlunoController {
   }
   static async perfil(req, res) {
     try {
-      const aluno = await Aluno.findAll();
+      const { matricula } = req.usuario
+      const aluno = await Aluno.findOne({
+        where: {matricula},
+        attributes: ['nome', 'email', 'matricula']
+      });
+
       if (!aluno) {
         return res.status(401).json({ msg: "Não existe aluno cadastrado!" });
       }
