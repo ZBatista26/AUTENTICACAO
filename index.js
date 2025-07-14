@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const { sequelize } = require('./src/config/configDB');
 const authRoute = require('./src/modulos/autenticacao/routes/autenticacao.route');
-const alunoRoute = require('./src/modulos/aluno/routes/aluno.route');
+const usuarioRoute = require('./src/modulos/usuario/routes/usuario.route');
 // Configuração do banco de dados
 dotenv.config(); // Carrega variáveis de ambiente do arquivo .env
 
@@ -16,7 +16,7 @@ app.use(cors({
 app.use(express.json());
 // rota aluno
 // // http:localhost:3001/api/login
-app.use('/api/', alunoRoute)
+app.use('/api/', usuarioRoute)
 
 // http://localhost:3001/api/login
 // http://localhost:3001/api/logout
